@@ -3,7 +3,6 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 import { Photo, PhotoService } from "../../services/photo.service";
 import { CommonModule } from "@angular/common";
 import { Observable } from "rxjs";
-import { provideHttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-photo-detail",

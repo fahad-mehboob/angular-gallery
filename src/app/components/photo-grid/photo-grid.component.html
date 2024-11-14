@@ -11,7 +11,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Loop through photos with *ngFor -->
           @for(photo of photos$ | async; track photo.id) {
           <tr>
             <td class="py-2 px-4">
@@ -33,7 +32,6 @@
       }
     </div>
   }
-  <!-- If no photos are available -->
    @if(displayedPhotos.length === 0) {
      <div>
        <p class="text-gray-500">No photos available.</p>
