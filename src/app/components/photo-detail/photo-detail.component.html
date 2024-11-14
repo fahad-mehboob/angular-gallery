@@ -1,0 +1,12 @@
+<!-- src/app/components/photo-detail/photo-detail.component.html -->
+<div class="container mx-auto p-4">
+  <button routerLink="/" class="text-blue-500 mb-4">Back</button>
+  @if(photo$ | async; as photo) {
+    <div class="text-center">
+      <h2 class="text-xl font-bold mt-4">{{ photo.title }}</h2>
+      <img src="{{photo.url}}" alt="{{ photo.title }}" loading="lazy" class="mx-auto rounded-lg shadow-lg" />
+    </div>
+  } @else {
+    <p>Loading...</p>
+  }
+</div>

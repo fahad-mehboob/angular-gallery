@@ -1,0 +1,43 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Photo Gallery</h1>
+
+  @if(photos$) {
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="py-2 px-4 text-left text-sm font-semibold text-gray-600">Thumbnail</th>
+            <th class="py-2 px-4 text-left text-sm font-semibold text-gray-600">Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through photos with *ngFor -->
+          @for(photo of photos$ | async; track photo.id) {
+          <tr>
+            <td class="py-2 px-4">
+              <a [routerLink]="['/photo', photo.id]" class="block">
+                <img [src]="photo.thumbnailUrl" loading="lazy" alt="{{ photo.title }}" class="w-24 h-24 object-cover rounded-md shadow-sm" />
+              </a>
+            </td>
+            <td class="py-2 px-4">
+              <p class="text-sm text-gray-600">{{ photo.title }}</p>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      @if (loading) {
+        <div class="text-center mt-4">
+          <span class="text-gray-600">Loading more photos...</span>
+        </div>
+      }
+    </div>
+  }
+  <!-- If no photos are available -->
+   @if(displayedPhotos.length === 0) {
+     <div>
+       <p class="text-gray-500">No photos available.</p>
+     </div>
+   }
+</div>
+
